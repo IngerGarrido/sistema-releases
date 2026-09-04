@@ -1,0 +1,13 @@
+# Release repo — solo ignoramos archivos locales/runtime que un cliente podría dejar
+backend/.env
+backend/install.lock
+install.lock
+backend/cache/
+backend/logs/
+backend/backups/
+backend/uploads/
+uploads/
+logs/
+*.log
+.DS_Store
+Thumbs.db

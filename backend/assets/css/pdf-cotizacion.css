@@ -1,0 +1,364 @@
+/* ════════════════════════════════════════════════════════════
+   PDF Cotización — Diseño profesional
+   Usa las variables --color-primario / --color-secundario que
+   inyecta exports.php. Mismos nombres de clase que el HTML.
+   ════════════════════════════════════════════════════════════ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  background: #eef1f5;
+  padding: 36px 14px;
+  color: #1f2430;
+  font-size: 13px;
+  line-height: 1.55;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── Hoja ───────────────────────────────────────────────── */
+.page {
+  background: #fff;
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+  box-shadow: 0 6px 30px rgba(20,28,45,.12);
+}
+
+/* Banda de color superior */
+.bar {
+  height: 6px;
+  background: var(--color-primario);
+}
+
+/* ── Encabezado ─────────────────────────────────────────── */
+.hd {
+  padding: 34px 44px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.company-logo {
+  height: 46px;
+  max-width: 170px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.company-name {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-secundario);
+  letter-spacing: -.2px;
+  margin-bottom: 5px;
+}
+
+.company-info {
+  font-size: 10.5px;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+/* Bloque derecho: título + número */
+.rh { text-align: right; flex-shrink: 0; }
+
+.rh .ml {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #9aa1ad;
+  margin-bottom: 2px;
+}
+
+.qn {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--color-primario);
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.fechas-cotizacion {
+  margin-top: 12px;
+  font-size: 10.5px;
+  color: #6b7280;
+  line-height: 1.8;
+}
+.fechas-cotizacion strong { color: #1f2430; }
+
+/* ── Meta: Cliente / Proyecto ───────────────────────────── */
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 44px;
+  border: 1px solid #e6e9ee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mb {
+  padding: 16px 22px;
+  background: #fafbfc;
+}
+.mb + .mb { border-left: 1px solid #e6e9ee; }
+
+.ml {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #9aa1ad;
+  margin-bottom: 5px;
+}
+.mb strong { font-size: 13.5px; color: #1f2430; font-weight: 700; }
+.text-muted { color: #8b92a0; }
+
+/* ── Cuerpo ─────────────────────────────────────────────── */
+.body {
+  padding: 30px 44px 110px;
+}
+
+/* ── Tabla de ítems ─────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
+}
+
+thead th {
+  background: var(--color-secundario);
+  color: #fff;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+thead th:first-child { border-radius: 6px 0 0 0; }
+thead th:last-child  { border-radius: 0 6px 0 0; }
+
+tbody td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #eef0f3;
+  vertical-align: top;
+  font-size: 12px;
+}
+tbody tr:nth-child(even) td { background: #fafbfc; }
+
+td.text-right, th.text-right { text-align: right; }
+td.font-bold { font-weight: 700; color: #1f2430; }
+
+.col-descripcion { width: 56%; }
+.col-cantidad    { width: 12%; }
+.col-precio,
+.col-total       { width: 16%; text-align: right; }
+
+/* ── Totales ────────────────────────────────────────────── */
+.tw {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 22px;
+  gap: 5px;
+}
+
+.subtotal,
+.descuento-info {
+  font-size: 12px;
+  padding-right: 4px;
+}
+.subtotal { color: #6b7280; }
+.descuento-info { color: #c0392b; font-weight: 600; }
+
+.tb {
+  margin-top: 8px;
+  background: var(--color-primario);
+  border-radius: 8px;
+  padding: 14px 28px;
+  color: #fff;
+  text-align: right;
+  min-width: 240px;
+}
+
+.tb-label {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  opacity: .85;
+  margin-bottom: 2px;
+}
+.tv {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -.5px;
+}
+
+/* ── Notas ──────────────────────────────────────────────── */
+.notes-box {
+  background: #f7f9fb;
+  border: 1px solid #e6e9ee;
+  border-left: 3px solid var(--color-primario);
+  padding: 14px 18px;
+  margin-top: 26px;
+  border-radius: 0 6px 6px 0;
+  font-size: 11.5px;
+  color: #4b5563;
+}
+.notes-box strong {
+  color: var(--color-secundario);
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+/* ── Términos y condiciones ─────────────────────────────── */
+.terms-section {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid #e6e9ee;
+}
+
+.terms-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-secundario);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: .8px;
+}
+.terms-title::before {
+  content: '';
+  width: 3px;
+  height: 13px;
+  background: var(--color-primario);
+  border-radius: 2px;
+}
+.terms-title-spaced { margin-top: 22px; }
+
+.terms-content {
+  font-size: 11px;
+  color: #4b5563;
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+.terms-content ul { margin: 6px 0; padding-left: 18px; }
+.terms-content li { margin-bottom: 4px; }
+
+/* ── Firmas ─────────────────────────────────────────────── */
+.signature-section {
+  margin-top: 46px;
+  padding-top: 22px;
+}
+
+.signature-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+.signature-item { flex: 1; text-align: center; }
+
+.signature-line {
+  border-top: 1.5px solid #c7ccd5;
+  margin-top: 56px;
+  padding-top: 10px;
+  font-size: 10.5px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+/* ── Pie de página ──────────────────────────────────────── */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 14px 44px;
+  background: #fafbfc;
+  border-top: 1px solid #e6e9ee;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9.5px;
+  color: #9aa1ad;
+}
+
+/* ── Toolbar (solo pantalla) ────────────────────────────── */
+.toolbar-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.btn-print, .btn-close {
+  padding: 9px 20px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: inherit;
+  letter-spacing: -.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: filter .15s, box-shadow .15s;
+}
+.btn-print {
+  background: var(--color-primario);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.btn-print:hover { filter: brightness(.93); }
+.btn-close {
+  background: #f1f3f5;
+  color: #495057;
+  border-color: #dee2e6;
+}
+.btn-close:hover { background: #e9ecef; }
+
+/* ── Impresión ──────────────────────────────────────────── */
+@page {
+  size: auto;
+  margin: 10mm 10mm 15mm 10mm;
+  @bottom-center { content: none; }
+  @bottom-left   { content: none; }
+  @bottom-right  { content: none; }
+  @top-center    { content: none; }
+  @top-left      { content: none; }
+  @top-right     { content: none; }
+}
+
+body { counter-reset: page; }
+.page { counter-increment: page; }
+
+@media print {
+  body { background: #fff !important; padding: 0 !important; }
+  .page {
+    box-shadow: none !important;
+    max-width: 100% !important;
+    min-height: auto;
+  }
+  .toolbar-actions, .no-print { display: none !important; }
+
+  .footer { position: fixed; bottom: 0; }
+  .body { padding-bottom: 70px; }
+
+  table, tr, td, th { page-break-inside: avoid; }
+  .terms-section, .notes-box { page-break-inside: avoid; margin-bottom: 16px; }
+  .signature-section { page-break-inside: avoid; margin-top: 30px; margin-bottom: 36px; }
+
+  .page-current::after { content: counter(page); }
+  .page-total::after   { content: counter(pages); }
+
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}

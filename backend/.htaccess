@@ -1,0 +1,21 @@
+# Bloquear acceso directo a archivos sensibles del backend.
+# Las API están en backend/api/ y siguen accesibles.
+
+# Denegar dotfiles (.env, .env.example, .git, etc.)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Denegar archivos sensibles por extensión
+<FilesMatch "\.(env|sql|log|md|json|lock|yml|yaml|ini|conf|sh|bak|swp|dist)$">
+    Require all denied
+</FilesMatch>
+
+# Denegar archivos PHP del root del backend (config.php, email_worker.php, cleanup_old_data.php)
+# — solo se ejecutan internamente o desde CLI, nunca desde el navegador.
+<FilesMatch "^(config|email_worker|cleanup_old_data)\.php$">
+    Require all denied
+</FilesMatch>
+
+# Sin listado de directorios
+Options -Indexes

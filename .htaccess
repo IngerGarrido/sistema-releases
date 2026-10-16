@@ -1,0 +1,78 @@
+# ─── Sistema · Configuración Apache para shared hosting ──────────
+# El entry point real es index.php (que sirve el SPA reescribiendo
+# las rutas de assets), por eso casi no necesitamos mod_rewrite.
+# Si mod_rewrite está disponible aprovechamos para que /assets/...
+# absoluto también funcione, pero no es obligatorio.
+# ─────────────────────────────────────────────────────────────────
+
+DirectoryIndex index.php index.html
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # /backend/... pasa tal cual
+  RewriteRule ^backend/ - [L]
+
+  # Archivos o carpetas que existan físicamente, servir tal cual
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # /assets/... → /frontend/dist/assets/... (por si algún build viejo
+  # quedó con rutas absolutas)
+  RewriteRule ^assets/(.*)$ frontend/dist/assets/$1 [L]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType text/css .css
+  AddType image/svg+xml .svg
+</IfModule>
+
+# ─── Compresión gzip (reduce JS/CSS ~70%) ───────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml application/x-font-ttf application/x-font-otf
+</IfModule>
+
+# ─── Cache de assets versionados (los hashes en el nombre ya invalidan al cambiar) ─
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Assets de Vite (tienen hash → cache 1 año)
+  <FilesMatch "\.(js|css|woff2?|ttf|otf|eot)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Imágenes — 1 mes
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    ExpiresDefault "access plus 1 month"
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # HTML — no cachear (debe refetch para detectar updates)
+  <FilesMatch "\.(html|php)$">
+    ExpiresActive Off
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+
+  # PWA: sw.js y manifest deben revalidar siempre
+  <FilesMatch "(sw\.js|manifest\.json)$">
+    ExpiresActive Off
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header set Service-Worker-Allowed "/"
+  </FilesMatch>
+</IfModule>
+
+# ─── Security headers ───────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # HSTS (solo si tu sitio siempre va a estar en HTTPS — sistema.ingergarrido.cl tiene SSL)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>

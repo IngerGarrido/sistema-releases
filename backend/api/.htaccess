@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Sin RewriteBase fijo: Apache/LiteSpeed lo deduce del directorio real,
+    # así funciona tanto en local (/sistema-local/...) como en producción (/).
+
+    # IMPORTANTE: Pasar header Authorization a PHP (requerido para Bearer tokens)
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+    # 1. Para rutas de RESTORE (PRIORIDAD ALTA - antes de verificar archivos existentes)
+    # Ej: clientes.php/restore/10 -> clientes.php?restore=1&id=10
+    RewriteRule ^([^/]+)\.php/restore/([^/]+)$ $1.php?restore=1&id=$2 [L,QSA]
+
+    # 2. Si el archivo existe físicamente Y no es una ruta compleja, entregarlo
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # 3. Si piden 'configuracion', 'clientes', etc., buscar su .php
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^([^/]+)$ $1.php [L,QSA]
+
+    # 4. Para rutas con ID (ej: clientes/10)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^([^/]+)/([^/]+)$ $1.php?id=$2 [L,QSA]
+</IfModule>
+
+# Permitir headers personalizados (Authorization)
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>

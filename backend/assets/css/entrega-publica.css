@@ -1,0 +1,15 @@
+/* Página pública del acta de entrega (/e/{token}). Se suma a cotizacion-publica.css. */
+.ap iframe.inner{display:block;border:0;background:#fff}
+.ap .docs .bar span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap .docs .bar a{white-space:nowrap;padding-left:10px}
+.ap .card.ent{display:flex;flex-direction:column;gap:12px}
+.ap .card.ent h2{font-size:19px;letter-spacing:-.025em;color:var(--text-title);line-height:1.25}
+.ap .card.ent p{font-size:13.5px}
+.ap .card.ent p b{color:var(--text-title)}
+.ap .ent-acciones{display:flex;flex-direction:column;gap:10px}
+.ap .ent-acciones .btn{width:100%}
+.ap .ent-form{display:flex;flex-direction:column;gap:12px}
+.ap .ent-form textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15px;color:var(--text-title);background:var(--bg-surface);resize:vertical;min-height:110px}
+.ap .ent-form textarea:focus{outline:2px solid var(--primary);outline-offset:1px;border-color:transparent}
+.ap .ent-volver{background:none;border:0;padding:4px 0;font:600 13.5px "Geist",sans-serif;color:var(--base);cursor:pointer;align-self:flex-start}
+.ap .ent-volver:hover{color:var(--text-title)}

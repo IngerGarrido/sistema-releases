@@ -1,0 +1,117 @@
+/* Cotización · diseño Opción A v2 (cotizacion/final/opcion-A-v2.html). No rediseñar: copiar desde la referencia. */
+:root{
+  --bg-body:#F3F4F7; --bg-alt:#E1E8F5; --bg-surface:#FFFFFF;
+  --text-title:#0C1633; --text-body:#4F5A74; --base:#4F5A74;
+  --primary:#2340E0; --accent:#93A3FF; --secondary:#0C1B4A; --light:#FFFFFF;
+  --line:rgba(12,22,51,.13); --frame-bar:#DCE3F1;
+  --text-on-ink:#B9C3E0; --text-on-ink-mute:#B4BCD2;
+  --chip-acc:color-mix(in srgb,var(--primary) 11%,#fff);
+  --radius-xs:6px; --radius-s:10px; --radius-m:12px; --radius-l:16px; --radius-xl:20px;
+  --shadow-frame:0 0 0 1px var(--line),0 24px 50px -24px rgba(12,27,74,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:letter;margin:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:"Geist",system-ui,sans-serif;font-size:13px;line-height:1.55;color:var(--text-body);-webkit-font-smoothing:antialiased}
+.sheet{width:8.5in;height:11in;position:relative;overflow:hidden;background:var(--bg-surface);display:flex;flex-direction:column}
+.sheet h1,.sheet h2,.sheet h3{color:var(--text-title);font-weight:700}
+.dot{color:var(--primary)}
+.lbl{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--base)}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.r{text-align:right}
+.sheet th.r,.sheet td.r{padding-left:20px}
+.sheet th:not(.r),.sheet td:not(.r){width:100%}
+table{width:100%;border-collapse:collapse}
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.sign div{border-top:1px solid var(--title,var(--text-title));padding-top:8px;font-size:12px;font-weight:600;color:var(--text-title);text-align:center}
+@media screen{body.solo{background:#cfd5e3;padding:32px 0}body.solo .sheet{margin:auto;box-shadow:0 10px 40px rgba(12,27,74,.18)}}
+@media print{body.solo{background:none;padding:0}.sheet{box-shadow:none!important;margin:0!important}}
+
+.doc{padding:44px 52px 0}
+.doc .c{text-align:center}
+.doc th,.doc td{width:auto}
+.doc th{white-space:nowrap}
+.doc th:nth-child(2),.doc td:nth-child(2){width:100%}
+.doc th.c,.doc td.c{padding-left:10px}
+.doc .grow{flex:1}
+.doc .sign{margin-top:auto;padding-bottom:26px}
+.doc .sign div{font-weight:600}
+.doc .sign small{display:block;font-weight:400;color:var(--base);font-size:11px;margin-top:2px}
+.doc .foot{margin:0 -52px;padding:12px 52px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:10.5px;color:var(--base)}
+.doc .brand{font-size:21px;font-weight:700;letter-spacing:-.035em;color:var(--text-title);line-height:1.1}
+.doc .brand .dot{color:var(--primary)}
+
+.a .head{display:flex;justify-content:space-between;align-items:flex-start;gap:28px}
+.a .emi .role{font-size:12.5px;font-weight:500;color:var(--primary);margin-top:3px}
+.a .emi p{font-size:11.5px;line-height:1.65;margin-top:10px}
+.a .box{border:1.5px solid var(--secondary);border-radius:var(--radius-s);text-align:center;min-width:210px;overflow:hidden}
+.a .box .t{background:var(--secondary);color:var(--light);font-size:12px;font-weight:700;letter-spacing:.16em;padding:8px 0}
+.a .box .n{font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--text-title);padding:10px 16px 2px}
+.a .box .f{font-size:11px;padding:0 16px 10px}
+.a h3{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--secondary);margin:24px 0 8px}
+.a .cli{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--radius-s);overflow:hidden}
+.a .cli div{display:grid;grid-template-columns:96px 1fr;font-size:12px;border-bottom:1px solid var(--line)}
+.a .cli div:nth-child(odd){border-right:1px solid var(--line)}
+.a .cli div:nth-last-child(-n+2){border-bottom:0}
+.a .cli span{background:var(--bg-body);padding:7px 10px;font-weight:600;color:var(--text-title)}
+.a .cli b{padding:7px 10px;font-weight:400;color:var(--text-title)}
+.a table{border:1px solid var(--line)}
+.a th{background:var(--secondary);color:var(--light);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:9px 10px;text-align:left}
+.a th.r{text-align:right}.a th.c{text-align:center}
+.a td{padding:10px;font-size:12.5px;color:var(--text-title);border-bottom:1px solid var(--line);border-right:1px solid var(--line);height:34px}
+.a td:last-child{border-right:0}
+.a th:first-child,.a td:first-child{width:44px}
+.a .tot{display:grid;grid-template-columns:1fr 260px;gap:24px;margin-top:14px;align-items:start}
+.a .son{font-size:11.5px;border:1px dashed var(--line);border-radius:var(--radius-s);padding:10px 12px}
+.a .son b{color:var(--text-title);font-weight:600}
+.a .sums div{display:flex;justify-content:space-between;padding:7px 12px;font-size:12.5px;color:var(--text-title);border:1px solid var(--line);border-top:0}
+.a .sums div:first-child{border-top:1px solid var(--line);border-radius:var(--radius-s) var(--radius-s) 0 0}
+.a .sums .g{background:var(--secondary);color:var(--light);border-color:var(--secondary);font-weight:700;font-size:15px;padding:10px 12px;border-radius:0 0 var(--radius-s) var(--radius-s)}
+.a .cond{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.a .cond ul{list-style:none;font-size:11.5px;line-height:1.75}
+.a .cond li b{color:var(--text-title);font-weight:600}
+.a .cond p{font-size:11.5px;color:var(--text-title)}
+
+/* Encabezado: emisor a la izquierda, recuadro a la derecha */
+.a .head{justify-content:space-between;width:100%}
+.a .box{margin-left:auto}
+/* Página 2 */
+.a .mini{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1.5px solid var(--secondary)}
+.a .mini .brand{font-size:16px}
+.a .mini span{font-size:11.5px;font-weight:600;color:var(--text-title)}
+.a.p2 h2{font-size:20px;letter-spacing:-.03em;margin-top:26px}
+.a.p2 .intro{font-size:12px;margin-top:4px}
+.a .blk{margin-top:22px;break-inside:avoid}
+.a .blk h3{margin:0 0 8px;display:flex;gap:10px;align-items:center}
+.a .blk h3 i{font-style:normal;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--secondary);color:var(--light);font-size:10px;letter-spacing:0}
+.a .rt{font-size:12px;line-height:1.65;color:var(--text-body);border-left:2px solid var(--line);padding-left:16px;margin-left:9px}
+.a .rt ul{list-style:none}
+.a .rt li{position:relative;padding-left:14px}
+.a .rt li+li{margin-top:5px}
+.a .rt li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--primary)}
+.a .rt strong{color:var(--text-title);font-weight:600}
+.a .acc{margin-top:26px;padding:12px 14px;background:var(--bg-body);border-radius:var(--radius-s);font-size:12px;color:var(--text-title)}
+.a.p1 .cond{margin-top:4px}
+
+@media screen{body.solo .sheet+.sheet{margin-top:28px}}
+@media print{.sheet{break-after:page}}
+
+/* ── Sistema: sello de aprobación (de cotizacion-aprobada.html) ── */
+.a .seal{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:auto;padding-bottom:26px}
+.a .seal .ok{border:1.5px solid var(--primary);border-radius:var(--radius-s);padding:12px 14px;font-size:11.5px;line-height:1.6;color:var(--text-body)}
+.a .seal .ok .lbl{color:var(--primary);display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.a .seal .ok b{color:var(--text-title);font-weight:600}
+.a .seal .me{align-self:end;border-top:1px solid var(--text-title);padding-top:8px;text-align:center;font-size:12px;font-weight:600;color:var(--text-title)}
+.a .seal .me small{display:block;font-weight:400;color:var(--base);font-size:11px;margin-top:2px}
+
+/* ── Sistema: paginación. Cada hoja mantiene su alto carta; el contenido
+   va en .flow y un script mueve bloques a una hoja nueva si no cabe. ── */
+.flow{display:flex;flex-direction:column;flex:1 0 auto}
+.a .blk.cont h3 small{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--base)}
+.tools{position:sticky;top:0;z-index:5;display:flex;gap:8px;justify-content:center;padding:10px;background:#cfd5e3}
+.tools button{font:600 13px/1 "Geist",system-ui,sans-serif;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;background:var(--text-title);color:var(--light)}
+.tools button.s{background:transparent;color:var(--text-title);box-shadow:inset 0 0 0 1.5px var(--text-title)}
+@media print{.tools{display:none!important}}
+
+/* Sistema: espacio entre párrafos de los textos de plantilla */
+.a .rt p+p,.a .rt p+ul,.a .rt ul+p,.a .rt ol+p,.a .rt p+ol{margin-top:5px}

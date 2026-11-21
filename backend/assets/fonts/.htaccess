@@ -1,0 +1,4 @@
+# La fuente se pide desde la vista del PDF (otra pestaña / otro origen en dev).
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+</IfModule>

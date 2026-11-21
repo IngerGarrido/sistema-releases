@@ -1,0 +1,17 @@
+/* Página pública con propuesta adjunta: pestañas Propuesta / Cotización. Solo se carga si hay propuesta. */
+.ap .tabs{display:flex;gap:6px;margin:0 0 20px;padding:4px;background:var(--bg-surface);border:1px solid var(--line);border-radius:12px;width:max-content;max-width:100%}
+.ap .tabs button{font:600 14px/1 "Geist",sans-serif;padding:11px 16px;border:0;border-radius:9px;background:transparent;color:var(--base);cursor:pointer}
+.ap .tabs button[aria-selected=true]{background:var(--text-title);color:var(--light)}
+.ap .tabs button:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.ap .tab-prop .frame{background:var(--bg-surface);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-frame)}
+.ap .tab-prop .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--frame-bar)}
+.ap .tab-prop .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.ap .tab-prop .bar span{margin-left:10px;font-size:12.5px;color:var(--base);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap .tab-prop .bar a{margin-left:auto;font-size:13px;font-weight:600;color:var(--primary);text-decoration:none;white-space:nowrap;padding-left:10px}
+.ap .docs .bar span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap .docs .bar a{white-space:nowrap;padding-left:10px}
+.ap iframe.inner{display:block;border:0;background:#fff}
+.ap .tab-next{display:flex;justify-content:flex-end}
+.ap .tab-prop .prop-cta{width:100%;margin-top:16px}
+.ap .tab-prop .prop-estado{margin-top:12px;font-size:13.5px;font-weight:600;color:var(--base);text-align:center}
+.ap .tab-prop .prop-estado.ok{color:var(--primary)}

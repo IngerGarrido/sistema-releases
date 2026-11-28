@@ -1,0 +1,99 @@
+/* Página pública de aprobación (cotizacion/final/aprobar.html), sin la barra Demo. */
+body.ap{background:var(--bg-body);color:var(--text-body);font-size:15px;line-height:1.6}
+.ap .nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg-body) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.ap .w{max-width:1120px;margin:auto;padding-inline:clamp(20px,4vw,40px)}
+.ap .nav .w{display:flex;justify-content:space-between;align-items:center;height:60px}
+.ap .logo{font-weight:700;letter-spacing:-.035em;font-size:18px;color:var(--text-title)}
+.ap .nav small{font-size:13px;color:var(--base)}
+.ap .hero{padding:48px 0 28px}
+.ap h1{font-size:clamp(30px,4vw,44px);letter-spacing:-.04em;line-height:1.1;color:var(--text-title);max-width:20ch}
+.ap .hero p{margin-top:12px;max-width:56ch}
+.ap .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:32px;align-items:start;padding-bottom:80px}
+.ap .docs{display:flex;flex-direction:column;gap:20px;min-width:0}
+.ap .docs .frame{background:var(--bg-surface);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-frame)}
+.ap .docs .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--frame-bar)}
+.ap .docs .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.ap .docs .bar span{margin-left:10px;font-size:12.5px;color:var(--base)}
+.ap .docs .bar a{margin-left:auto;font-size:13px;font-weight:600;color:var(--primary);text-decoration:none}
+.ap .scaler{position:relative;overflow:hidden}
+.ap .scaler .inner{transform-origin:top left;width:816px}
+.ap .scaler .sheet+.sheet{border-top:1px dashed var(--line)}
+.ap aside{position:sticky;top:84px;display:flex;flex-direction:column;gap:16px}
+.ap .card{background:var(--bg-surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.ap aside .card:not(.sum){padding:20px}
+.ap .sum dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:13px;margin-top:12px}
+.ap .sum dt{color:var(--base)}
+.ap .sum dd{color:var(--text-title);font-weight:500;text-align:right}
+.ap .sum .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.ap .sum .total span{font-weight:600;color:var(--text-title)}
+.ap .sum .total strong{font-size:28px;letter-spacing:-.04em;color:var(--text-title)}
+.ap aside .lbl{font-size:12px}
+.ap form{display:flex;flex-direction:column;gap:16px}
+.ap form h2{font-size:17px;font-weight:650;letter-spacing:-.02em;color:var(--text-title);line-height:1.25}
+.ap form h2+p{margin-top:-12px}
+.ap form p{font-size:13px;line-height:1.5;color:var(--base)}
+.ap label.f,.ap legend.f{display:block;font-size:12.5px;font-weight:600;color:var(--text-title);margin-bottom:6px;padding:0}
+.ap input[type=text]{width:100%;height:42px;padding:0 12px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:14px;color:var(--text-title);background:var(--bg-surface)}
+.ap input[type=text]:focus{outline:2px solid var(--primary);outline-offset:1px;border-color:transparent}
+.ap input[aria-invalid=true]{border-color:#C2410C}
+.ap .err{font-size:12.5px;color:#C2410C;margin-top:5px;display:none}
+.ap .err.on{display:block}
+.ap .chk{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.5;color:var(--text-title);cursor:pointer}
+.ap .chk input{width:16px;height:16px;margin-top:2px;accent-color:var(--primary);flex:none}
+.ap .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;font:600 14px/1 "Geist",sans-serif;padding:14px 18px;border-radius:10px;border:0;cursor:pointer;background:var(--text-title);color:var(--light);transition:background .2s,transform .2s}
+.ap .btn:hover:not(:disabled){background:var(--primary);transform:translateY(-2px)}
+.ap .btn:disabled{opacity:.45;cursor:not-allowed}
+.ap .btn.s{background:transparent;color:var(--text-title);box-shadow:inset 0 0 0 1.5px var(--text-title)}
+.ap .btn.s:hover{background:var(--text-title);color:var(--light)}
+.ap .fine{font-size:11.5px;line-height:1.5;color:var(--base)}
+.ap form .fine{margin-top:-8px;text-align:center}
+.ap .help{font-size:13.5px}
+.ap .help a{color:var(--primary);font-weight:600;text-decoration:none}
+.ap .card.ok{background:var(--secondary);border:0;color:var(--light)}
+.ap .card.ok h2{color:var(--light);font-size:19px;font-weight:650;letter-spacing:-.025em;margin-top:12px;line-height:1.2}
+.ap .card.ok p{color:var(--text-on-ink);font-size:13px;line-height:1.5;margin-top:6px}
+.ap .card.ok .ico{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--secondary)}
+.ap .card.ok dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.ap .card.ok dt{color:rgba(255,255,255,.62)}.ap .card.ok dd{color:var(--light);font-weight:500}
+.ap .card.ok .next{margin-top:14px;font-size:13px;color:var(--text-on-ink-mute)}
+.ap .card.ok .next b{color:var(--light)}
+.ap .exp h2{font-size:17px;font-weight:650;color:var(--text-title);letter-spacing:-.02em;line-height:1.25}
+.ap .exp p{font-size:13px;line-height:1.5;color:var(--base);margin-top:6px}
+.ap .exp .btn{margin-top:14px;width:100%}
+.ap [hidden]{display:none!important}
+@media(max-width:900px){.ap .layout{grid-template-columns:1fr}.ap aside{position:static;order:-1}}
+
+/* Respuesta sin aprobar: «¿Algo no te convence? Cuéntame» (secundario, bajo Aprobar) */
+.ap .resp{padding:14px 20px}
+.ap .resp summary{cursor:pointer;font-size:13px;color:var(--base);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ap .resp summary::-webkit-details-marker{display:none}
+.ap .resp summary::after{content:"";width:7px;height:7px;border-right:1.5px solid var(--base);border-bottom:1.5px solid var(--base);transform:rotate(45deg) translateY(-2px);transition:transform .2s;flex:none}
+.ap .resp[open] summary::after{transform:rotate(-135deg) translateY(-1px)}
+.ap .resp summary b{color:var(--primary);font-weight:600}
+.ap .resp[open]{padding-bottom:20px}
+.ap .resp[open] summary{padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.ap .resp-op{border:0;padding:0;margin:0;display:grid;gap:8px}
+.ap .resp-op .chk{padding:11px 12px;border:1px solid var(--line);border-radius:10px;align-items:flex-start;transition:border-color .15s,background .15s}
+.ap .resp-op .chk:has(input:checked){border-color:var(--primary);background:color-mix(in srgb,var(--primary) 5%,var(--bg-surface))}
+.ap .resp-op .chk span{display:grid;gap:2px;font-size:13px;font-weight:600;color:var(--text-title);line-height:1.35}
+.ap .resp-op small{font-size:12px;color:var(--base);font-weight:400;line-height:1.45}
+.ap label.f small{font-weight:400;color:var(--base)}
+.ap .resp textarea,.ap .resp select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:14px;line-height:1.5;color:var(--text-title);background:var(--bg-surface)}
+.ap .resp select{height:42px;padding:0 10px}
+.ap .resp textarea{resize:vertical;min-height:88px}
+.ap .resp textarea::placeholder{color:color-mix(in srgb,var(--base) 70%,transparent)}
+.ap .resp textarea:focus,.ap .resp select:focus{outline:2px solid var(--primary);outline-offset:1px;border-color:transparent}
+.ap .resp .btn{width:100%}
+.ap .resp-ya{font-size:12.5px;line-height:1.5;color:var(--text-title);background:var(--bg-body,#F3F4F7);border-radius:10px;padding:10px 12px;margin-bottom:16px}
+.ap .resp-ok{display:grid;gap:2px;font-size:13.5px;color:var(--text-title)}
+.ap .resp-ok span{color:var(--base);font-size:13px}
+
+/* Resumen: el total primero; los datos de referencia, en segundo plano */
+.ap .sum .sum-top{display:grid;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.ap .sum .sum-total{font-size:32px;font-weight:700;letter-spacing:-.045em;line-height:1.1;color:var(--text-title);margin-top:6px;font-variant-numeric:tabular-nums}
+.ap .sum .sum-vence{font-size:12.5px;color:var(--base);margin-top:4px}
+.ap .sum .sum-vence b{color:var(--text-title);font-weight:600}
+.ap .sum .sum-dl{margin-top:14px}
+.ap .sum .sum-pago{margin-top:14px;padding:10px 12px;background:var(--bg-body,#F3F4F7);border-radius:10px}
+.ap .sum .sum-pago span{display:block;font-size:12px;font-weight:650;color:var(--text-title)}
+.ap .sum .sum-pago p{font-size:13px;line-height:1.45;color:var(--text-body);margin-top:2px}

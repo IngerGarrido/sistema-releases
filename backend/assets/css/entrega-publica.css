@@ -1,0 +1,16 @@
+/* Página pública del acta de entrega (/e/{token}). Se suma a cotizacion-publica.css. */
+.ap iframe.inner{display:block;border:0;background:#fff}
+.ap .docs .bar span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap .docs .bar a{white-space:nowrap;padding-left:10px}
+.ap .card.ent{display:flex;flex-direction:column;gap:16px}
+.ap .card.ent h2{font-size:17px;font-weight:650;letter-spacing:-.02em;color:var(--text-title);line-height:1.25}
+.ap .card.ent h2+p{margin-top:-12px}
+.ap .card.ent p{font-size:13px;line-height:1.5;color:var(--base)}
+.ap .card.ent p b{color:var(--text-title)}
+.ap .ent-acciones{display:flex;flex-direction:column;gap:10px}
+.ap .ent-acciones .btn{width:100%}
+.ap .ent-form{display:flex;flex-direction:column;gap:16px}
+.ap .ent-form textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:14px;line-height:1.5;color:var(--text-title);background:var(--bg-surface);resize:vertical;min-height:96px}
+.ap .ent-form textarea:focus{outline:2px solid var(--primary);outline-offset:1px;border-color:transparent}
+.ap .ent-volver{background:none;border:0;padding:0;margin-top:-8px;font:600 12.5px "Geist",sans-serif;color:var(--base);cursor:pointer;align-self:flex-start}
+.ap .ent-volver:hover{color:var(--text-title)}
